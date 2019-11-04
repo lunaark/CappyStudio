@@ -40,66 +40,70 @@
             // 
             // picDisplay
             // 
-            this.picDisplay.Location = new System.Drawing.Point(93, 12);
+            this.picDisplay.Location = new System.Drawing.Point(66, 12);
             this.picDisplay.Name = "picDisplay";
-            this.picDisplay.Size = new System.Drawing.Size(438, 276);
+            this.picDisplay.Size = new System.Drawing.Size(492, 276);
             this.picDisplay.TabIndex = 0;
             this.picDisplay.TabStop = false;
             // 
             // lblAction
             // 
             this.lblAction.AutoSize = true;
-            this.lblAction.Location = new System.Drawing.Point(12, 304);
+            this.lblAction.Location = new System.Drawing.Point(63, 304);
             this.lblAction.Name = "lblAction";
-            this.lblAction.Size = new System.Drawing.Size(12, 13);
+            this.lblAction.Size = new System.Drawing.Size(0, 13);
             this.lblAction.TabIndex = 2;
-            this.lblAction.Text = "/";
             // 
             // lblIndex
             // 
             this.lblIndex.AutoSize = true;
-            this.lblIndex.Location = new System.Drawing.Point(12, 379);
+            this.lblIndex.Location = new System.Drawing.Point(63, 376);
             this.lblIndex.Name = "lblIndex";
-            this.lblIndex.Size = new System.Drawing.Size(12, 13);
+            this.lblIndex.Size = new System.Drawing.Size(0, 13);
             this.lblIndex.TabIndex = 3;
-            this.lblIndex.Text = "/";
             // 
             // lblKeyPress
             // 
             this.lblKeyPress.AutoSize = true;
-            this.lblKeyPress.Location = new System.Drawing.Point(12, 291);
+            this.lblKeyPress.Location = new System.Drawing.Point(63, 291);
             this.lblKeyPress.Name = "lblKeyPress";
-            this.lblKeyPress.Size = new System.Drawing.Size(12, 13);
+            this.lblKeyPress.Size = new System.Drawing.Size(0, 13);
             this.lblKeyPress.TabIndex = 1;
-            this.lblKeyPress.Text = "/";
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(537, 294);
+            this.btnModify.Location = new System.Drawing.Point(408, 339);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(75, 95);
+            this.btnModify.Size = new System.Drawing.Size(150, 50);
             this.btnModify.TabIndex = 4;
             this.btnModify.Text = "Modify Elements";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnLeft
             // 
+            this.btnLeft.BackColor = System.Drawing.Color.Transparent;
+            this.btnLeft.FlatAppearance.BorderSize = 0;
+            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLeft.Location = new System.Drawing.Point(12, 12);
             this.btnLeft.Name = "btnLeft";
-            this.btnLeft.Size = new System.Drawing.Size(75, 276);
+            this.btnLeft.Size = new System.Drawing.Size(48, 276);
             this.btnLeft.TabIndex = 5;
             this.btnLeft.Text = "<";
-            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.UseVisualStyleBackColor = false;
             this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // btnRight
             // 
-            this.btnRight.Location = new System.Drawing.Point(537, 12);
+            this.btnRight.BackColor = System.Drawing.Color.Transparent;
+            this.btnRight.FlatAppearance.BorderSize = 0;
+            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRight.Location = new System.Drawing.Point(564, 12);
             this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(75, 276);
+            this.btnRight.Size = new System.Drawing.Size(48, 276);
             this.btnRight.TabIndex = 6;
             this.btnRight.Text = ">";
-            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.UseVisualStyleBackColor = false;
             this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // MainForm

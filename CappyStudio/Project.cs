@@ -39,7 +39,7 @@ namespace CappyStudio
 
         public static void SetInteraction(int interaction, int index)
         {
-            string intr
+            string intr;
         }
 
         public static void InitList()

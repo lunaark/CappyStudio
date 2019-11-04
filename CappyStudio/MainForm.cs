@@ -55,9 +55,9 @@ namespace CappyStudio
             index = 0;
             maxLength = 0;
 
-            lblAction.Text = "/";
-            lblIndex.Text = "/";
-            lblKeyPress.Text = "/";
+            lblAction.Text = "";
+            lblIndex.Text = "";
+            lblKeyPress.Text = "";
         }
 
         private void RefreshInteraction()
@@ -154,6 +154,12 @@ namespace CappyStudio
                 index++;
                 RefreshInteraction();
             }
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            EditorForm elementEditor = new EditorForm();
+            elementEditor.Show();
         }
     }
 }
