@@ -11,6 +11,18 @@ namespace CappyStudio
     {
         private static List<string> interactions = new List<string>();
 
+        public static List<string> Interactions
+        {
+            get
+            {
+                return interactions;
+            }
+            set
+            {
+                interactions = value;
+            }
+        }
+
         public static string[] ParseInteractions()
         {
             // instantiate the file for reading
@@ -37,13 +49,21 @@ namespace CappyStudio
             return items;
         }
 
-        public static void SetInteraction(int interaction, int index)
+        public static void SetInteraction(int interaction, int index, string value)
         {
-            string intr;
+            // declare a string that contains the interaction we want
+            string[] interact = GetInteraction(interaction);
+
+            // set that a value inside that interaction to the passed value
+            interact[index] = value;
+
+            // recombine them and then ship em back off
+            interactions[index] = String.Join(";", interact);
         }
 
         public static void InitList()
         {
+            interactions.Clear();
             foreach(var item in ParseInteractions())
             {
                 interactions.Add(item);

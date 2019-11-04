@@ -110,6 +110,7 @@ namespace CappyStudio
 
                     btnModify.Visible = true;
 
+                    Project.InitList();
                     RefreshInteraction();
                 }
             }
@@ -117,9 +118,17 @@ namespace CappyStudio
 
         private void SaveProject(object sender, EventArgs e)
         {
-            using(StreamWriter projWriter = new StreamWriter(File.Open(Studio.ProjectPath, FileMode.Create)))
+            try
             {
-                // TODO: add project writer   
+                using (StreamWriter projWriter = new StreamWriter(File.Open(Studio.ProjectPath, FileMode.Create)))
+                {
+                    // TODO: add project writer
+                    projWriter.Write(Project.Interactions.ToString());
+                }
+            }
+            catch(IOException)
+            {
+                MessageBox.Show("Insufficient permissions!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
