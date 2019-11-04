@@ -58,9 +58,9 @@
             this.lblIndex.AutoSize = true;
             this.lblIndex.Location = new System.Drawing.Point(192, 329);
             this.lblIndex.Name = "lblIndex";
-            this.lblIndex.Size = new System.Drawing.Size(35, 13);
+            this.lblIndex.Size = new System.Drawing.Size(12, 13);
             this.lblIndex.TabIndex = 3;
-            this.lblIndex.Text = "label1";
+            this.lblIndex.Text = "\\";
             // 
             // lblKeyPress
             // 
@@ -77,7 +77,7 @@
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(240, 40);
             this.btnModify.TabIndex = 4;
-            this.btnModify.Text = "button1";
+            this.btnModify.Text = "Modify Elements";
             this.btnModify.UseVisualStyleBackColor = true;
             // 
             // MainForm
@@ -90,10 +90,10 @@
             this.Controls.Add(this.lblAction);
             this.Controls.Add(this.lblKeyPress);
             this.Controls.Add(this.picDisplay);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Text = "CappyStudio";
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

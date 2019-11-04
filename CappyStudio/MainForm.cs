@@ -32,6 +32,13 @@ namespace CappyStudio
             file.MenuItems.Add("Save Project");
             file.MenuItems.Add("Build Project");
             file.MenuItems.Add("Exit");
+
+            // initialize ui
+            lblAction.Visible = false;
+            lblIndex.Visible = false;
+            lblKeyPress.Visible = false;
+
+            btnModify.Visible = false;
         }
     }
 }
