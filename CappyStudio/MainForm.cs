@@ -35,24 +35,35 @@ namespace CappyStudio
             // add sub-items
             file.MenuItems.Add("Open Project", new EventHandler(OpenProject));
             file.MenuItems.Add("Save Project", new EventHandler(SaveProject));
+            file.MenuItems.Add("Close Project", new EventHandler(CloseProject));
             file.MenuItems.Add("Build Project", new EventHandler(BuildProject));
             file.MenuItems.Add("Exit", new EventHandler(ExitApp));
 
-            // initialize ui
-            lblAction.Visible = false;
-            lblIndex.Visible = false;
-            lblKeyPress.Visible = false;
+            Initialize();
+        }
 
+        private void Initialize()
+        {
+            // initialize ui
             btnModify.Visible = false;
 
             btnLeft.Text = char.ConvertFromUtf32(0x2190);
             btnRight.Text = char.ConvertFromUtf32(0x2192);
+
+            picDisplay.Image = ImageMethods.ResizeImage(Properties.Resources.grid, picDisplay.Width, picDisplay.Height);
+
+            index = 0;
+            maxLength = 0;
+
+            lblAction.Text = "/";
+            lblIndex.Text = "/";
+            lblKeyPress.Text = "/";
         }
 
         private void RefreshInteraction()
         {
             // set index label
-            lblIndex.Text = $"Current Index: {index} of {maxLength}";
+            lblIndex.Text = $"Current Index: {index+1} of {maxLength+1}";
 
             // split interactions
             string[] items = Project.GetInteraction(index);
@@ -61,7 +72,7 @@ namespace CappyStudio
             string ButtonClicked = String.Empty;
             string WindowText = String.Empty;
             string FullFileName = String.Empty;
-            
+
             // declare them
             if (items.Length == 4)
             {
@@ -79,7 +90,8 @@ namespace CappyStudio
 
             // set more gui stuff
             lblKeyPress.Text = $"Button Clicked: {ButtonClicked}";
-            picDisplay.Image = Image.FromFile(FullFileName);
+            picDisplay.Image.Dispose();
+            picDisplay.Image = ImageMethods.ResizeImage(Image.FromFile(FullFileName), picDisplay.Width, picDisplay.Height);
         }
 
         private void OpenProject(object sender, EventArgs e)
@@ -89,11 +101,15 @@ namespace CappyStudio
                 if(projDialog.ShowDialog() == DialogResult.OK)
                 {
                     Studio.ProjectPath = projDialog.FileName;
+
                     maxLength = Project.ParseInteractions().Length;
+
+                    btnModify.Visible = true;
                     RefreshInteraction();
                 }
             }
         }
+
         private void SaveProject(object sender, EventArgs e)
         {
             using(StreamWriter projWriter = new StreamWriter(File.Open(Studio.ProjectPath, FileMode.Create)))
@@ -101,16 +117,24 @@ namespace CappyStudio
                 // TODO: add project writer   
             }
         }
+
+        private void CloseProject(object sender, EventArgs e)
+        {
+            Initialize();
+            Studio.ProjectPath = String.Empty;
+        }
+
         private void BuildProject(object sender, EventArgs e)
         {
         }
+
         private void ExitApp(object sender, EventArgs e)
         {
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
-            if(index > 0)
+            if(index >= 1)
             {
                 index--;
                 RefreshInteraction();
@@ -119,7 +143,7 @@ namespace CappyStudio
 
         private void btnRight_Click(object sender, EventArgs e)
         {
-            if(index < maxLength)
+            if(index < maxLength-1)
             {
                 index++;
                 RefreshInteraction();

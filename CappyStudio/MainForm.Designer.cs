@@ -40,44 +40,44 @@
             // 
             // picDisplay
             // 
-            this.picDisplay.Location = new System.Drawing.Point(192, 48);
+            this.picDisplay.Location = new System.Drawing.Point(93, 48);
             this.picDisplay.Name = "picDisplay";
-            this.picDisplay.Size = new System.Drawing.Size(240, 240);
+            this.picDisplay.Size = new System.Drawing.Size(438, 240);
             this.picDisplay.TabIndex = 0;
             this.picDisplay.TabStop = false;
             // 
             // lblAction
             // 
             this.lblAction.AutoSize = true;
-            this.lblAction.Location = new System.Drawing.Point(192, 312);
+            this.lblAction.Location = new System.Drawing.Point(90, 304);
             this.lblAction.Name = "lblAction";
             this.lblAction.Size = new System.Drawing.Size(12, 13);
             this.lblAction.TabIndex = 2;
-            this.lblAction.Text = "\\";
+            this.lblAction.Text = "/";
             // 
             // lblIndex
             // 
             this.lblIndex.AutoSize = true;
-            this.lblIndex.Location = new System.Drawing.Point(192, 329);
+            this.lblIndex.Location = new System.Drawing.Point(90, 332);
             this.lblIndex.Name = "lblIndex";
             this.lblIndex.Size = new System.Drawing.Size(12, 13);
             this.lblIndex.TabIndex = 3;
-            this.lblIndex.Text = "\\";
+            this.lblIndex.Text = "/";
             // 
             // lblKeyPress
             // 
             this.lblKeyPress.AutoSize = true;
-            this.lblKeyPress.Location = new System.Drawing.Point(192, 295);
+            this.lblKeyPress.Location = new System.Drawing.Point(90, 291);
             this.lblKeyPress.Name = "lblKeyPress";
             this.lblKeyPress.Size = new System.Drawing.Size(12, 13);
             this.lblKeyPress.TabIndex = 1;
-            this.lblKeyPress.Text = "\\";
+            this.lblKeyPress.Text = "/";
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(192, 345);
+            this.btnModify.Location = new System.Drawing.Point(537, 332);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(240, 40);
+            this.btnModify.Size = new System.Drawing.Size(75, 57);
             this.btnModify.TabIndex = 4;
             this.btnModify.Text = "Modify Elements";
             this.btnModify.UseVisualStyleBackColor = true;
