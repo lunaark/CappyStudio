@@ -33,6 +33,8 @@
             this.lblIndex = new System.Windows.Forms.Label();
             this.lblKeyPress = new System.Windows.Forms.Label();
             this.btnModify = new System.Windows.Forms.Button();
+            this.btnLeft = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,11 +82,33 @@
             this.btnModify.Text = "Modify Elements";
             this.btnModify.UseVisualStyleBackColor = true;
             // 
+            // btnLeft
+            // 
+            this.btnLeft.Location = new System.Drawing.Point(12, 48);
+            this.btnLeft.Name = "btnLeft";
+            this.btnLeft.Size = new System.Drawing.Size(75, 240);
+            this.btnLeft.TabIndex = 5;
+            this.btnLeft.Text = "<";
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
+            // 
+            // btnRight
+            // 
+            this.btnRight.Location = new System.Drawing.Point(537, 48);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(75, 240);
+            this.btnRight.TabIndex = 6;
+            this.btnRight.Text = ">";
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 401);
+            this.Controls.Add(this.btnRight);
+            this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.lblIndex);
             this.Controls.Add(this.lblAction);
@@ -107,6 +131,8 @@
         private System.Windows.Forms.Label lblIndex;
         private System.Windows.Forms.Label lblKeyPress;
         private System.Windows.Forms.Button btnModify;
+        private System.Windows.Forms.Button btnLeft;
+        private System.Windows.Forms.Button btnRight;
     }
 }
 

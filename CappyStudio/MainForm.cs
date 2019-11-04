@@ -13,6 +13,10 @@ namespace CappyStudio
 {
     public partial class MainForm : Form
     {
+        // fields
+        private int index = 0;
+        private int maxLength = 0;
+
         public MainForm()
         {
             InitializeComponent();
@@ -40,20 +44,42 @@ namespace CappyStudio
             lblKeyPress.Visible = false;
 
             btnModify.Visible = false;
+
+            btnLeft.Text = char.ConvertFromUtf32(0x2190);
+            btnRight.Text = char.ConvertFromUtf32(0x2192);
         }
 
-        private static string[] ParseProject()
+        private void RefreshInteraction()
         {
-            // instantiate the file for reading
-            string projContent = File.ReadAllText(Studio.ProjectPath);
+            // set index label
+            lblIndex.Text = $"Current Index: {index} of {maxLength}";
 
-            // remove the last ? from the file (always the last byte), because it is used to separate scriptItems. leaving this in would be catastrophic, but there's probably a better way.
-            projContent = projContent.Remove(projContent.Length - 1);
+            // split interactions
+            string[] items = Project.GetInteraction(index);
 
-            // now that there is a ? between each scriptItem, and not at the start or ends, we can properly index them all in an array
-            string[] items = projContent.Split('?');
+            // prepare fields
+            string ButtonClicked = String.Empty;
+            string WindowText = String.Empty;
+            string FullFileName = String.Empty;
+            
+            // declare them
+            if (items.Length == 4)
+            {
+                ButtonClicked = items[0];
+                WindowText = items[1];
+                FullFileName = items[2];
 
-            return items;
+                lblAction.Text = $"Interaction: {WindowText}";
+            }
+            else if(items.Length == 2)
+            {
+                ButtonClicked = items[0];
+                FullFileName = items[1];
+            }
+
+            // set more gui stuff
+            lblKeyPress.Text = $"Button Clicked: {ButtonClicked}";
+            picDisplay.Image = Image.FromFile(FullFileName);
         }
 
         private void OpenProject(object sender, EventArgs e)
@@ -63,6 +89,8 @@ namespace CappyStudio
                 if(projDialog.ShowDialog() == DialogResult.OK)
                 {
                     Studio.ProjectPath = projDialog.FileName;
+                    maxLength = Project.ParseInteractions().Length;
+                    RefreshInteraction();
                 }
             }
         }
@@ -78,6 +106,24 @@ namespace CappyStudio
         }
         private void ExitApp(object sender, EventArgs e)
         {
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            if(index > 0)
+            {
+                index--;
+                RefreshInteraction();
+            }
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            if(index < maxLength)
+            {
+                index++;
+                RefreshInteraction();
+            }
         }
     }
 }
