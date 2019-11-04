@@ -63,7 +63,7 @@ namespace CappyStudio
         private void RefreshInteraction()
         {
             // set index label
-            lblIndex.Text = $"Current Index: {index+1} of {maxLength+1}";
+            lblIndex.Text = $"Current Index: {index+1} of {maxLength}";
 
             // split interactions
             string[] items = Project.GetInteraction(index);
@@ -80,6 +80,10 @@ namespace CappyStudio
                 WindowText = items[1];
                 FullFileName = items[2];
 
+                if(String.IsNullOrEmpty(WindowText))
+                {
+                    WindowText = "Unknown";
+                }
                 lblAction.Text = $"Interaction: {WindowText}";
             }
             else if(items.Length == 2)
@@ -105,6 +109,7 @@ namespace CappyStudio
                     maxLength = Project.ParseInteractions().Length;
 
                     btnModify.Visible = true;
+
                     RefreshInteraction();
                 }
             }
@@ -130,6 +135,7 @@ namespace CappyStudio
 
         private void ExitApp(object sender, EventArgs e)
         {
+            Environment.Exit(0);
         }
 
         private void btnLeft_Click(object sender, EventArgs e)

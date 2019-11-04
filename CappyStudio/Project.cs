@@ -9,6 +9,8 @@ namespace CappyStudio
 {
     static class Project
     {
+        private static List<string> interactions = new List<string>();
+
         public static string[] ParseInteractions()
         {
             // instantiate the file for reading
@@ -33,6 +35,19 @@ namespace CappyStudio
 
             // return it
             return items;
+        }
+
+        public static void SetInteraction(int interaction, int index)
+        {
+            string intr
+        }
+
+        public static void InitList()
+        {
+            foreach(var item in ParseInteractions())
+            {
+                interactions.Add(item);
+            }
         }
     }
 }

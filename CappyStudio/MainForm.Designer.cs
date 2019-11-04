@@ -40,16 +40,16 @@
             // 
             // picDisplay
             // 
-            this.picDisplay.Location = new System.Drawing.Point(93, 48);
+            this.picDisplay.Location = new System.Drawing.Point(93, 12);
             this.picDisplay.Name = "picDisplay";
-            this.picDisplay.Size = new System.Drawing.Size(438, 240);
+            this.picDisplay.Size = new System.Drawing.Size(438, 276);
             this.picDisplay.TabIndex = 0;
             this.picDisplay.TabStop = false;
             // 
             // lblAction
             // 
             this.lblAction.AutoSize = true;
-            this.lblAction.Location = new System.Drawing.Point(90, 304);
+            this.lblAction.Location = new System.Drawing.Point(12, 304);
             this.lblAction.Name = "lblAction";
             this.lblAction.Size = new System.Drawing.Size(12, 13);
             this.lblAction.TabIndex = 2;
@@ -58,7 +58,7 @@
             // lblIndex
             // 
             this.lblIndex.AutoSize = true;
-            this.lblIndex.Location = new System.Drawing.Point(90, 332);
+            this.lblIndex.Location = new System.Drawing.Point(12, 379);
             this.lblIndex.Name = "lblIndex";
             this.lblIndex.Size = new System.Drawing.Size(12, 13);
             this.lblIndex.TabIndex = 3;
@@ -67,7 +67,7 @@
             // lblKeyPress
             // 
             this.lblKeyPress.AutoSize = true;
-            this.lblKeyPress.Location = new System.Drawing.Point(90, 291);
+            this.lblKeyPress.Location = new System.Drawing.Point(12, 291);
             this.lblKeyPress.Name = "lblKeyPress";
             this.lblKeyPress.Size = new System.Drawing.Size(12, 13);
             this.lblKeyPress.TabIndex = 1;
@@ -75,18 +75,18 @@
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(537, 332);
+            this.btnModify.Location = new System.Drawing.Point(537, 294);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(75, 57);
+            this.btnModify.Size = new System.Drawing.Size(75, 95);
             this.btnModify.TabIndex = 4;
             this.btnModify.Text = "Modify Elements";
             this.btnModify.UseVisualStyleBackColor = true;
             // 
             // btnLeft
             // 
-            this.btnLeft.Location = new System.Drawing.Point(12, 48);
+            this.btnLeft.Location = new System.Drawing.Point(12, 12);
             this.btnLeft.Name = "btnLeft";
-            this.btnLeft.Size = new System.Drawing.Size(75, 240);
+            this.btnLeft.Size = new System.Drawing.Size(75, 276);
             this.btnLeft.TabIndex = 5;
             this.btnLeft.Text = "<";
             this.btnLeft.UseVisualStyleBackColor = true;
@@ -94,9 +94,9 @@
             // 
             // btnRight
             // 
-            this.btnRight.Location = new System.Drawing.Point(537, 48);
+            this.btnRight.Location = new System.Drawing.Point(537, 12);
             this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(75, 240);
+            this.btnRight.Size = new System.Drawing.Size(75, 276);
             this.btnRight.TabIndex = 6;
             this.btnRight.Text = ">";
             this.btnRight.UseVisualStyleBackColor = true;
