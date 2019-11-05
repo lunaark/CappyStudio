@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnFull = new System.Windows.Forms.Button();
             this.btnFocus = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtAction
@@ -88,11 +90,33 @@
             this.btnFocus.Text = "Choose Focused Screenshot";
             this.btnFocus.UseVisualStyleBackColor = true;
             // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(171, 180);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(150, 23);
+            this.btnNext.TabIndex = 7;
+            this.btnNext.Text = "Next Interaction";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.Location = new System.Drawing.Point(15, 179);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(150, 23);
+            this.btnPrev.TabIndex = 8;
+            this.btnPrev.Text = "Previous Interaction";
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 186);
+            this.ClientSize = new System.Drawing.Size(335, 213);
+            this.Controls.Add(this.btnPrev);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnFocus);
             this.Controls.Add(this.btnFull);
             this.Controls.Add(this.label2);
@@ -114,5 +138,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnFull;
         private System.Windows.Forms.Button btnFocus;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrev;
     }
 }

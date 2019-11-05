@@ -23,6 +23,9 @@ namespace CappyStudio
             }
         }
 
+        public static bool IsLoaded
+        { get; set; }
+
         public static string[] ParseInteractions()
         {
             // instantiate the file for reading

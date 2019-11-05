@@ -13,10 +13,6 @@ namespace CappyStudio
 {
     public partial class MainForm : Form
     {
-        // fields
-        private int index = 0;
-        private int maxLength = 0;
-
         public MainForm()
         {
             InitializeComponent();
@@ -47,26 +43,42 @@ namespace CappyStudio
             // initialize ui
             btnModify.Visible = false;
 
+            btnLeft.Visible = false;
+            btnRight.Visible = false;
+
+            picDisplay.Visible = false;
+
             btnLeft.Text = char.ConvertFromUtf32(0x2190);
             btnRight.Text = char.ConvertFromUtf32(0x2192);
 
-            picDisplay.Image = ImageMethods.ResizeImage(Properties.Resources.grid, picDisplay.Width, picDisplay.Height);
-
-            index = 0;
-            maxLength = 0;
+            Studio.Index = 0;
+            Studio.MaxLength = 0;
 
             lblAction.Text = "";
             lblIndex.Text = "";
             lblKeyPress.Text = "";
+
+            picDisplay.Image = Properties.Resources.grid;
+        }
+
+        private void ProjectLoad()
+        {
+            Studio.MaxLength = Project.ParseInteractions().Length;
+
+            btnModify.Visible = true;
+            btnLeft.Visible = true;
+            btnRight.Visible = true;
+
+            picDisplay.Visible = true;
         }
 
         private void RefreshInteraction()
         {
             // set index label
-            lblIndex.Text = $"Current Index: {index+1} of {maxLength}";
+            lblIndex.Text = $"Current Index: {Studio.Index+1} of {Studio.MaxLength}";
 
             // split interactions
-            string[] items = Project.GetInteraction(index);
+            string[] items = Project.GetInteraction(Studio.Index);
 
             // prepare fields
             string ButtonClicked = String.Empty;
@@ -105,12 +117,10 @@ namespace CappyStudio
                 if(projDialog.ShowDialog() == DialogResult.OK)
                 {
                     Studio.ProjectPath = projDialog.FileName;
-
-                    maxLength = Project.ParseInteractions().Length;
-
-                    btnModify.Visible = true;
+                    Project.IsLoaded = true;
 
                     Project.InitList();
+                    ProjectLoad();
                     RefreshInteraction();
                 }
             }
@@ -123,7 +133,7 @@ namespace CappyStudio
                 using (StreamWriter projWriter = new StreamWriter(File.Open(Studio.ProjectPath, FileMode.Create)))
                 {
                     // TODO: add project writer
-                    projWriter.Write(Project.Interactions.ToString());
+                    projWriter.Write(String.Join("?", Project.Interactions.ToArray()));
                 }
             }
             catch(IOException)
@@ -134,8 +144,17 @@ namespace CappyStudio
 
         private void CloseProject(object sender, EventArgs e)
         {
-            Initialize();
-            Studio.ProjectPath = String.Empty;
+            if (Project.IsLoaded)
+            {
+                Initialize();
+
+                Studio.ProjectPath = String.Empty;
+                Project.IsLoaded = false;
+            }
+            else
+            {
+                MessageBox.Show("No project is loaded!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void BuildProject(object sender, EventArgs e)
@@ -149,18 +168,18 @@ namespace CappyStudio
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
-            if(index >= 1)
+            if(Studio.Index >= 1)
             {
-                index--;
+                Studio.Index--;
                 RefreshInteraction();
             }
         }
 
         private void btnRight_Click(object sender, EventArgs e)
         {
-            if(index < maxLength-1)
+            if(Studio.Index < Studio.MaxLength- 1)
             {
-                index++;
+                Studio.Index++;
                 RefreshInteraction();
             }
         }
