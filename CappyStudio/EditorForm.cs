@@ -30,7 +30,6 @@ namespace CappyStudio
 
         private void LoadElement()
         {
-            contents = Project.GetInteraction(Studio.Index);
             lblIndex.Text = $"Index: {Studio.Index + 1} of {Studio.MaxLength}";
             if (contents.Length == 5)
             {
@@ -46,6 +45,8 @@ namespace CappyStudio
 
         private void MouseCapture()
         {
+            contents = Project.GetInteraction(Studio.Index);
+
             ButtonAction = contents[0];
             ButtonClicked = contents[1];
             WindowText = contents[2];
@@ -71,6 +72,8 @@ namespace CappyStudio
 
         private void KeyCapture()
         {
+            contents = Project.GetInteraction(Studio.Index);
+
             ButtonAction = contents[0];
             ButtonClicked = contents[1];
             FullFileName = contents[2];
