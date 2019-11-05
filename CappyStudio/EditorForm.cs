@@ -132,9 +132,11 @@ namespace CappyStudio
 
         private void btnFull_Click(object sender, EventArgs e)
         {
-            using(OpenFileDialog fullDialog = new OpenFileDialog())
+            using (OpenFileDialog fullDialog = new OpenFileDialog())
             {
-                if(fullDialog.ShowDialog() == DialogResult.OK)
+                fullDialog.Filter = "Image files (*.bmp;*.png;*.jpg)|*.bmp;*.png;*.jpg";
+                fullDialog.Title = "Select an Image";
+                if (fullDialog.ShowDialog() == DialogResult.OK)
                 {
                     FullFileName = fullDialog.FileName;
                 }
@@ -145,6 +147,8 @@ namespace CappyStudio
         {
             using (OpenFileDialog focusDialog = new OpenFileDialog())
             {
+                focusDialog.Filter = "Image files (*.bmp;*.png;*.jpg)|*.bmp;*.png;*.jpg";
+                focusDialog.Title = "Select an Image";
                 if (focusDialog.ShowDialog() == DialogResult.OK)
                 {
                     FocusFileName = focusDialog.FileName;

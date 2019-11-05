@@ -119,7 +119,9 @@ namespace CappyStudio
         {
             using(OpenFileDialog projDialog = new OpenFileDialog())
             {
-                if(projDialog.ShowDialog() == DialogResult.OK)
+                projDialog.Filter = "Cappy Projects (*.capproj)|*.capproj";
+                projDialog.Title = "Select a Cappy Project";
+                if (projDialog.ShowDialog() == DialogResult.OK)
                 {
                     Studio.ProjectPath = projDialog.FileName;
                     Project.IsLoaded = true;
