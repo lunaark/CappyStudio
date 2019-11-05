@@ -35,6 +35,8 @@ namespace CappyStudio
             file.MenuItems.Add("Build Project", new EventHandler(BuildProject));
             file.MenuItems.Add("Exit", new EventHandler(ExitApp));
 
+            options.MenuItems.Add("Output Folder", new EventHandler(OutputFolder));
+
             Initialize();
         }
 
@@ -168,6 +170,17 @@ namespace CappyStudio
         private void ExitApp(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void OutputFolder(object sender, EventArgs e)
+        {
+            using(FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+                if(folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Studio.OutputPath = folderDialog.SelectedPath;
+                }
+            }
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
