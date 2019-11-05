@@ -23,6 +23,8 @@ namespace CappyStudio
         {
             InitializeComponent();
             LoadElement();
+
+            FormClosing += new FormClosingEventHandler(EditorClosing);
         }
 
         private void LoadElement()
@@ -55,6 +57,14 @@ namespace CappyStudio
 
             txtInteraction.Visible = true;
             lblInteraction.Visible = true;
+
+            if (String.IsNullOrEmpty(WindowText))
+            {
+                WindowText = "Unknown";
+            }
+
+            txtAction.Text = ButtonClicked;
+            txtInteraction.Text = WindowText;
         }
 
         private void KeyCapture()
@@ -73,6 +83,22 @@ namespace CappyStudio
             txtInteraction.Text = WindowText;
         }
 
+        private void SaveChanges()
+        {
+            if (contents.Length == 4)
+            {
+                Project.SetInteraction(Studio.Index, 0, txtAction.Text);
+                Project.SetInteraction(Studio.Index, 1, txtInteraction.Text);
+                Project.SetInteraction(Studio.Index, 2, FullFileName);
+                Project.SetInteraction(Studio.Index, 3, FocusFileName);
+            }
+            else if (contents.Length == 2)
+            {
+                Project.SetInteraction(Studio.Index, 0, txtAction.Text);
+                Project.SetInteraction(Studio.Index, 1, FullFileName);
+            }
+        }
+
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (Studio.Index < Studio.MaxLength - 1)
@@ -88,6 +114,33 @@ namespace CappyStudio
             {
                 Studio.Index--;
                 LoadElement();
+            }
+        }
+
+        private void EditorClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveChanges();
+        }
+
+        private void btnFull_Click(object sender, EventArgs e)
+        {
+            using(OpenFileDialog fullDialog = new OpenFileDialog())
+            {
+                if(fullDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FullFileName = fullDialog.FileName;
+                }
+            }
+        }
+
+        private void btnFocus_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog focusDialog = new OpenFileDialog())
+            {
+                if (focusDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FocusFileName = focusDialog.FileName;
+                }
             }
         }
     }

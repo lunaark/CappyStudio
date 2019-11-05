@@ -81,6 +81,7 @@
             this.btnFull.TabIndex = 5;
             this.btnFull.Text = "Choose Full \r\nScreenshot";
             this.btnFull.UseVisualStyleBackColor = true;
+            this.btnFull.Click += new System.EventHandler(this.btnFull_Click);
             // 
             // btnFocus
             // 
@@ -90,6 +91,7 @@
             this.btnFocus.TabIndex = 6;
             this.btnFocus.Text = "Choose Focused Screenshot";
             this.btnFocus.UseVisualStyleBackColor = true;
+            this.btnFocus.Click += new System.EventHandler(this.btnFocus_Click);
             // 
             // btnNext
             // 
