@@ -111,6 +111,7 @@ namespace CappyStudio
         {
             if (Studio.Index < Studio.MaxLength - 1)
             {
+                SaveChanges();
                 Studio.Index++;
                 LoadElement();
             }
@@ -120,6 +121,7 @@ namespace CappyStudio
         {
             if (Studio.Index >= 1)
             {
+                SaveChanges();
                 Studio.Index--;
                 LoadElement();
             }
