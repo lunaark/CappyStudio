@@ -92,11 +92,6 @@ namespace CappyStudio
                 WindowText = items[2];
                 FullFileName = items[3];
 
-                if(String.IsNullOrEmpty(WindowText))
-                {
-                    WindowText = "Unknown";
-                }
-
                 lblAction.Visible = true;
                 lblAction.Text = $"Interaction: {WindowText}";
             }

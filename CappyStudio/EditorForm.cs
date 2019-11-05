@@ -60,11 +60,6 @@ namespace CappyStudio
             txtInteraction.Visible = true;
             lblInteraction.Visible = true;
 
-            if (String.IsNullOrEmpty(WindowText))
-            {
-                WindowText = "Unknown";
-            }
-
             txtAction.Text = ButtonAction;
             txtBtnClicked.Text = ButtonClicked;
             txtInteraction.Text = WindowText;
