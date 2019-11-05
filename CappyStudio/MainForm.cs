@@ -96,12 +96,16 @@ namespace CappyStudio
                 {
                     WindowText = "Unknown";
                 }
+
+                lblAction.Visible = false;
                 lblAction.Text = $"Interaction: {WindowText}";
             }
             else if(items.Length == 2)
             {
                 ButtonClicked = items[0];
                 FullFileName = items[1];
+
+                lblAction.Visible = false;
             }
 
             // set more gui stuff
@@ -188,6 +192,13 @@ namespace CappyStudio
         {
             EditorForm elementEditor = new EditorForm();
             elementEditor.Show();
+
+            elementEditor.FormClosed += new FormClosedEventHandler(RefreshOnClose); 
+        }
+
+        private void RefreshOnClose(object sender, FormClosedEventArgs e)
+        {
+            RefreshInteraction();
         }
     }
 }

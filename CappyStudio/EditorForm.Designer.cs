@@ -30,12 +30,13 @@
         {
             this.txtAction = new System.Windows.Forms.TextBox();
             this.txtInteraction = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblAction = new System.Windows.Forms.Label();
+            this.lblInteraction = new System.Windows.Forms.Label();
             this.btnFull = new System.Windows.Forms.Button();
             this.btnFocus = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
+            this.lblIndex = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtAction
@@ -54,23 +55,23 @@
             this.txtInteraction.Size = new System.Drawing.Size(308, 20);
             this.txtInteraction.TabIndex = 2;
             // 
-            // label1
+            // lblAction
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Button Action";
+            this.lblAction.AutoSize = true;
+            this.lblAction.Location = new System.Drawing.Point(12, 9);
+            this.lblAction.Name = "lblAction";
+            this.lblAction.Size = new System.Drawing.Size(71, 13);
+            this.lblAction.TabIndex = 3;
+            this.lblAction.Text = "Button Action";
             // 
-            // label2
+            // lblInteraction
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Interaction";
+            this.lblInteraction.AutoSize = true;
+            this.lblInteraction.Location = new System.Drawing.Point(12, 55);
+            this.lblInteraction.Name = "lblInteraction";
+            this.lblInteraction.Size = new System.Drawing.Size(57, 13);
+            this.lblInteraction.TabIndex = 4;
+            this.lblInteraction.Text = "Interaction";
             // 
             // btnFull
             // 
@@ -110,17 +111,27 @@
             this.btnPrev.UseVisualStyleBackColor = true;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
+            // lblIndex
+            // 
+            this.lblIndex.AutoSize = true;
+            this.lblIndex.Location = new System.Drawing.Point(15, 209);
+            this.lblIndex.Name = "lblIndex";
+            this.lblIndex.Size = new System.Drawing.Size(36, 13);
+            this.lblIndex.TabIndex = 9;
+            this.lblIndex.Text = "Index:";
+            // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 213);
+            this.ClientSize = new System.Drawing.Size(335, 233);
+            this.Controls.Add(this.lblIndex);
             this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnFocus);
             this.Controls.Add(this.btnFull);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblInteraction);
+            this.Controls.Add(this.lblAction);
             this.Controls.Add(this.txtInteraction);
             this.Controls.Add(this.txtAction);
             this.Name = "EditorForm";
@@ -134,11 +145,12 @@
 
         private System.Windows.Forms.TextBox txtAction;
         private System.Windows.Forms.TextBox txtInteraction;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblAction;
+        private System.Windows.Forms.Label lblInteraction;
         private System.Windows.Forms.Button btnFull;
         private System.Windows.Forms.Button btnFocus;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Label lblIndex;
     }
 }

@@ -27,6 +27,8 @@ namespace CappyStudio
 
         private void LoadElement()
         {
+            contents = Project.GetInteraction(Studio.Index);
+            lblIndex.Text = $"Index: {Studio.Index + 1} of {Studio.MaxLength}";
             if (contents.Length == 4)
             {
                 MouseCapture();
@@ -45,8 +47,14 @@ namespace CappyStudio
             FullFileName = contents[2];
             FocusFileName = contents[3];
 
+            btnFull.Text = "Choose Full Screenshot";
+            btnFocus.Text = "Choose Focused Screenshot";
+
             btnFocus.Visible = true;
             btnFull.Visible = true;
+
+            txtInteraction.Visible = true;
+            lblInteraction.Visible = true;
         }
 
         private void KeyCapture()
@@ -56,6 +64,11 @@ namespace CappyStudio
 
             btnFocus.Visible = false;
             btnFull.Visible = true;
+
+            txtInteraction.Visible = false;
+            lblInteraction.Visible = false;
+
+            btnFull.Text = "Choose Screenshot";
 
             txtInteraction.Text = WindowText;
         }
