@@ -13,7 +13,7 @@ namespace CappyStudio
 {
     static class Document
     {
-        public static void BuildDoc(List<string> interactions)
+        public static void BuildDoc(string[] interactions)
         {
             string outPath = Path.Combine(Studio.OutputPath, $"Cappy-{Studio.GetSaveTime()}.doc");
             using(DocX doc = DocX.Create(outPath))
@@ -35,6 +35,43 @@ namespace CappyStudio
                         WindowText = values[1];
                         FullFileName = values[2];
                         FocusFileName = values[3];
+
+                        if (!String.IsNullOrEmpty(WindowText))
+                        {
+                            // if string is not empty, check it for aforementioned jank
+                            switch (WindowText)
+                            {
+                                case "Tree View":
+                                    ButtonAction = "Scroll through";
+                                    break;
+
+                                case "System Promoted Notification Area":
+                                    WindowText = "Notification Tray";
+                                    break;
+
+                                case "New notification":
+                                    WindowText = "Notification";
+                                    break;
+
+                                case "Overflow Notification Area":
+                                    WindowText = "System Tray Icon";
+                                    break;
+
+                                case "Running applications":
+                                    WindowText = "Taskbar Icon";
+                                    break;
+
+                                case "Start":
+                                    WindowText = "Start Menu";
+                                    break;
+                            }
+                            ParagraphText = ButtonAction + " " + WindowText;
+                        }
+                        else
+                        {
+                            // if we can't determine what was clicked, resort to this.
+                            ParagraphText = ButtonAction + " << FILL IN MISSING TEXT >>";
+                        }
                     }
                     else if (values.Length == 2)
                     {
@@ -57,42 +94,6 @@ namespace CappyStudio
                         ButtonAction = "Press";
                     }
 
-                    if (!String.IsNullOrEmpty(WindowText))
-                    {
-                        // if string is not empty, check it for aforementioned jank
-                        switch (WindowText)
-                        {
-                            case "Tree View":
-                                ButtonAction = "Scroll through";
-                                break;
-
-                            case "System Promoted Notification Area":
-                                WindowText = "Notification Tray";
-                                break;
-
-                            case "New notification":
-                                WindowText = "Notification";
-                                break;
-
-                            case "Overflow Notification Area":
-                                WindowText = "System Tray Icon";
-                                break;
-
-                            case "Running applications":
-                                WindowText = "Taskbar Icon";
-                                break;
-
-                            case "Start":
-                                WindowText = "Start Menu";
-                                break;
-                        }
-                        ParagraphText = ButtonAction + " " + WindowText;
-                    }
-                    else
-                    {
-                        // if we can't determine what was clicked, resort to this.
-                        ParagraphText = ButtonAction + " << FILL IN MISSING TEXT >>";
-                    }
 
                     if (values.Length == 4)
                     {

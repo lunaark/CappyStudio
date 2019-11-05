@@ -134,17 +134,24 @@ namespace CappyStudio
 
         private void SaveProject(object sender, EventArgs e)
         {
-            try
+            if(Project.IsLoaded)
             {
-                using (StreamWriter projWriter = new StreamWriter(File.Open(Studio.ProjectPath, FileMode.Create)))
+                try
                 {
-                    // TODO: add project writer
-                    projWriter.Write(String.Join("?", Project.Interactions.ToArray()));
+                    using (StreamWriter projWriter = new StreamWriter(File.Open(Studio.ProjectPath, FileMode.Create)))
+                    {
+                        // TODO: add project writer
+                        projWriter.Write(String.Join("?", Project.Interactions.ToArray()));
+                    }
+                }
+                catch(IOException)
+                {
+                    MessageBox.Show("Insufficient permissions!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch(IOException)
+            else
             {
-                MessageBox.Show("Insufficient permissions!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No project is loaded!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -165,6 +172,14 @@ namespace CappyStudio
 
         private void BuildProject(object sender, EventArgs e)
         {
+            if (Project.IsLoaded)
+            {
+                Document.BuildDoc(Project.Interactions.ToArray());
+            }
+            else
+            {
+                MessageBox.Show("No project is loaded!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void ExitApp(object sender, EventArgs e)
