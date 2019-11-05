@@ -61,7 +61,7 @@ namespace CappyStudio
             interact[index] = value;
 
             // recombine them and then ship em back off
-            interactions[index] = String.Join(";", interact);
+            interactions[interaction] = String.Join(";", interact);
         }
 
         public static void InitList()

@@ -30,6 +30,8 @@ namespace CappyStudio
 
         private void LoadElement()
         {
+            contents = Project.GetInteraction(Studio.Index);
+
             lblIndex.Text = $"Index: {Studio.Index + 1} of {Studio.MaxLength}";
             if (contents.Length == 5)
             {
@@ -39,14 +41,10 @@ namespace CappyStudio
             {
                 KeyCapture();
             }
-            txtAction.Text = ButtonAction;
-            txtBtnClicked.Text = ButtonClicked;
         }
 
         private void MouseCapture()
         {
-            contents = Project.GetInteraction(Studio.Index);
-
             ButtonAction = contents[0];
             ButtonClicked = contents[1];
             WindowText = contents[2];
@@ -67,13 +65,13 @@ namespace CappyStudio
                 WindowText = "Unknown";
             }
 
+            txtAction.Text = ButtonAction;
+            txtBtnClicked.Text = ButtonClicked;
             txtInteraction.Text = WindowText;
         }
 
         private void KeyCapture()
         {
-            contents = Project.GetInteraction(Studio.Index);
-
             ButtonAction = contents[0];
             ButtonClicked = contents[1];
             FullFileName = contents[2];
@@ -86,6 +84,8 @@ namespace CappyStudio
 
             btnFull.Text = "Choose Screenshot";
 
+            txtAction.Text = ButtonAction;
+            txtBtnClicked.Text = ButtonClicked;
             txtInteraction.Text = WindowText;
         }
 
@@ -96,8 +96,8 @@ namespace CappyStudio
                 Project.SetInteraction(Studio.Index, 0, txtAction.Text);
                 Project.SetInteraction(Studio.Index, 1, txtBtnClicked.Text);
                 Project.SetInteraction(Studio.Index, 2, txtInteraction.Text);
-                Project.SetInteraction(Studio.Index, 2, FullFileName);
-                Project.SetInteraction(Studio.Index, 3, FocusFileName);
+                Project.SetInteraction(Studio.Index, 3, FullFileName);
+                Project.SetInteraction(Studio.Index, 4, FocusFileName);
             }
             else if (contents.Length == 3)
             {
