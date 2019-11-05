@@ -22,11 +22,9 @@ namespace CappyStudio
 
             // declare menu items
             MenuItem file = new MenuItem("File");
-            MenuItem options = new MenuItem("Options");
 
             // add items
             Menu.MenuItems.Add(file);
-            Menu.MenuItems.Add(options);
 
             // add sub-items
             file.MenuItems.Add("Open Project", new EventHandler(OpenProject));
@@ -34,8 +32,6 @@ namespace CappyStudio
             file.MenuItems.Add("Close Project", new EventHandler(CloseProject));
             file.MenuItems.Add("Build Project", new EventHandler(BuildProject));
             file.MenuItems.Add("Exit", new EventHandler(ExitApp));
-
-            options.MenuItems.Add("Output Folder", new EventHandler(OutputFolder));
 
             Initialize();
         }
@@ -83,35 +79,38 @@ namespace CappyStudio
             string[] items = Project.GetInteraction(Studio.Index);
 
             // prepare fields
+            string ButtonAction = String.Empty;
             string ButtonClicked = String.Empty;
             string WindowText = String.Empty;
             string FullFileName = String.Empty;
 
             // declare them
-            if (items.Length == 4)
+            if (items.Length == 5)
             {
-                ButtonClicked = items[0];
-                WindowText = items[1];
-                FullFileName = items[2];
+                ButtonAction = items[0];
+                ButtonClicked = items[1];
+                WindowText = items[2];
+                FullFileName = items[3];
 
                 if(String.IsNullOrEmpty(WindowText))
                 {
                     WindowText = "Unknown";
                 }
 
-                lblAction.Visible = false;
+                lblAction.Visible = true;
                 lblAction.Text = $"Interaction: {WindowText}";
             }
-            else if(items.Length == 2)
+            else if(items.Length == 3)
             {
-                ButtonClicked = items[0];
-                FullFileName = items[1];
+                ButtonAction = items[0];
+                ButtonClicked = items[1];
+                FullFileName = items[2];
 
                 lblAction.Visible = false;
             }
 
             // set more gui stuff
-            lblKeyPress.Text = $"Button Clicked: {ButtonClicked}";
+            lblKeyPress.Text = $"Action: {ButtonAction} {ButtonClicked}";
             picDisplay.Image.Dispose();
             picDisplay.Image = ImageMethods.ResizeImage(Image.FromFile(FullFileName), picDisplay.Width, picDisplay.Height);
         }

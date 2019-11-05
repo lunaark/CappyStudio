@@ -14,6 +14,7 @@ namespace CappyStudio
     {
         string[] contents = Project.GetInteraction(Studio.Index);
 
+        string ButtonAction = String.Empty;
         string ButtonClicked = String.Empty;
         string WindowText = String.Empty;
         string FullFileName = String.Empty;
@@ -31,23 +32,25 @@ namespace CappyStudio
         {
             contents = Project.GetInteraction(Studio.Index);
             lblIndex.Text = $"Index: {Studio.Index + 1} of {Studio.MaxLength}";
-            if (contents.Length == 4)
+            if (contents.Length == 5)
             {
                 MouseCapture();
             }
-            else if (contents.Length == 2)
+            else if (contents.Length == 3)
             {
                 KeyCapture();
             }
-            txtAction.Text = ButtonClicked;
+            txtAction.Text = ButtonAction;
+            txtBtnClicked.Text = ButtonClicked;
         }
 
         private void MouseCapture()
         {
-            ButtonClicked = contents[0];
-            WindowText = contents[1];
-            FullFileName = contents[2];
-            FocusFileName = contents[3];
+            ButtonAction = contents[0];
+            ButtonClicked = contents[1];
+            WindowText = contents[2];
+            FullFileName = contents[3];
+            FocusFileName = contents[4];
 
             btnFull.Text = "Choose Full Screenshot";
             btnFocus.Text = "Choose Focused Screenshot";
@@ -63,14 +66,14 @@ namespace CappyStudio
                 WindowText = "Unknown";
             }
 
-            txtAction.Text = ButtonClicked;
             txtInteraction.Text = WindowText;
         }
 
         private void KeyCapture()
         {
-            ButtonClicked = contents[0];
-            FullFileName = contents[1];
+            ButtonAction = contents[0];
+            ButtonClicked = contents[1];
+            FullFileName = contents[2];
 
             btnFocus.Visible = false;
             btnFull.Visible = true;
@@ -85,17 +88,19 @@ namespace CappyStudio
 
         private void SaveChanges()
         {
-            if (contents.Length == 4)
+            if (contents.Length == 5)
             {
                 Project.SetInteraction(Studio.Index, 0, txtAction.Text);
-                Project.SetInteraction(Studio.Index, 1, txtInteraction.Text);
+                Project.SetInteraction(Studio.Index, 1, txtBtnClicked.Text);
+                Project.SetInteraction(Studio.Index, 2, txtInteraction.Text);
                 Project.SetInteraction(Studio.Index, 2, FullFileName);
                 Project.SetInteraction(Studio.Index, 3, FocusFileName);
             }
-            else if (contents.Length == 2)
+            else if (contents.Length == 3)
             {
                 Project.SetInteraction(Studio.Index, 0, txtAction.Text);
-                Project.SetInteraction(Studio.Index, 1, FullFileName);
+                Project.SetInteraction(Studio.Index, 1, txtBtnClicked.Text);
+                Project.SetInteraction(Studio.Index, 2, FullFileName);
             }
         }
 

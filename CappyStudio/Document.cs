@@ -15,7 +15,7 @@ namespace CappyStudio
     {
         public static void BuildDoc(string[] interactions)
         {
-            string outPath = Path.Combine(Studio.OutputPath, $"Cappy-{Studio.GetSaveTime()}.doc");
+            string outPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + $@"\Cappy-{Studio.GetSaveTime()}.doc";
             using(DocX doc = DocX.Create(outPath))
             {
                 foreach (var interaction in interactions)
@@ -29,42 +29,16 @@ namespace CappyStudio
                     string FullFileName = String.Empty;
                     string FocusFileName = String.Empty;
 
-                    if (values.Length == 4)
+                    if (values.Length == 5)
                     {
-                        ButtonClicked = values[0];
-                        WindowText = values[1];
-                        FullFileName = values[2];
-                        FocusFileName = values[3];
+                        ButtonAction = values[0];
+                        ButtonClicked = values[1];
+                        WindowText = values[2];
+                        FullFileName = values[3];
+                        FocusFileName = values[4];
 
                         if (!String.IsNullOrEmpty(WindowText))
                         {
-                            // if string is not empty, check it for aforementioned jank
-                            switch (WindowText)
-                            {
-                                case "Tree View":
-                                    ButtonAction = "Scroll through";
-                                    break;
-
-                                case "System Promoted Notification Area":
-                                    WindowText = "Notification Tray";
-                                    break;
-
-                                case "New notification":
-                                    WindowText = "Notification";
-                                    break;
-
-                                case "Overflow Notification Area":
-                                    WindowText = "System Tray Icon";
-                                    break;
-
-                                case "Running applications":
-                                    WindowText = "Taskbar Icon";
-                                    break;
-
-                                case "Start":
-                                    WindowText = "Start Menu";
-                                    break;
-                            }
                             ParagraphText = ButtonAction + " " + WindowText;
                         }
                         else
@@ -73,29 +47,14 @@ namespace CappyStudio
                             ParagraphText = ButtonAction + " << FILL IN MISSING TEXT >>";
                         }
                     }
-                    else if (values.Length == 2)
+                    else if (values.Length == 3)
                     {
-                        ButtonClicked = values[0];
-                        FullFileName = values[1];
+                        ButtonAction = values[0];
+                        ButtonClicked = values[1];
+                        FullFileName = values[2];
                     }
 
-                    if (ButtonClicked.Equals("Left"))
-                    {
-                        ButtonAction = "Click";
-                    }
-                    else if (ButtonClicked.Equals("Right"))
-                    {
-                        ButtonAction = "Right-click";
-                    }
-                    else if (ButtonClicked.Equals("Tab") ||
-                             ButtonClicked.Equals("Escape") ||
-                             ButtonClicked.Equals("Enter"))
-                    {
-                        ButtonAction = "Press";
-                    }
-
-
-                    if (values.Length == 4)
+                    if (values.Length == 5)
                     {
                         // create our paragraph to work with
                         Paragraph p = doc.InsertParagraph();
@@ -159,7 +118,7 @@ namespace CappyStudio
                         FocusCaptureImage.Dispose();
                         FocusCaptureStream.Dispose();
                     }
-                    else if(values.Length == 2)
+                    else if(values.Length == 3)
                     {
                         // create our paragraph to work with
                         Paragraph p = doc.InsertParagraph();

@@ -37,11 +37,13 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
             this.lblIndex = new System.Windows.Forms.Label();
+            this.lblButtonClicked = new System.Windows.Forms.Label();
+            this.txtBtnClicked = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtAction
             // 
-            this.txtAction.Location = new System.Drawing.Point(12, 25);
+            this.txtAction.Location = new System.Drawing.Point(11, 25);
             this.txtAction.MaxLength = 80;
             this.txtAction.Name = "txtAction";
             this.txtAction.Size = new System.Drawing.Size(309, 20);
@@ -49,7 +51,7 @@
             // 
             // txtInteraction
             // 
-            this.txtInteraction.Location = new System.Drawing.Point(13, 71);
+            this.txtInteraction.Location = new System.Drawing.Point(12, 103);
             this.txtInteraction.MaxLength = 80;
             this.txtInteraction.Name = "txtInteraction";
             this.txtInteraction.Size = new System.Drawing.Size(308, 20);
@@ -67,7 +69,7 @@
             // lblInteraction
             // 
             this.lblInteraction.AutoSize = true;
-            this.lblInteraction.Location = new System.Drawing.Point(12, 55);
+            this.lblInteraction.Location = new System.Drawing.Point(12, 87);
             this.lblInteraction.Name = "lblInteraction";
             this.lblInteraction.Size = new System.Drawing.Size(57, 13);
             this.lblInteraction.TabIndex = 4;
@@ -75,7 +77,7 @@
             // 
             // btnFull
             // 
-            this.btnFull.Location = new System.Drawing.Point(15, 98);
+            this.btnFull.Location = new System.Drawing.Point(15, 132);
             this.btnFull.Name = "btnFull";
             this.btnFull.Size = new System.Drawing.Size(150, 75);
             this.btnFull.TabIndex = 5;
@@ -85,7 +87,7 @@
             // 
             // btnFocus
             // 
-            this.btnFocus.Location = new System.Drawing.Point(171, 98);
+            this.btnFocus.Location = new System.Drawing.Point(170, 132);
             this.btnFocus.Name = "btnFocus";
             this.btnFocus.Size = new System.Drawing.Size(150, 75);
             this.btnFocus.TabIndex = 6;
@@ -95,7 +97,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(171, 180);
+            this.btnNext.Location = new System.Drawing.Point(171, 213);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(150, 23);
             this.btnNext.TabIndex = 7;
@@ -105,7 +107,7 @@
             // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(15, 179);
+            this.btnPrev.Location = new System.Drawing.Point(15, 213);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(150, 23);
             this.btnPrev.TabIndex = 8;
@@ -116,17 +118,36 @@
             // lblIndex
             // 
             this.lblIndex.AutoSize = true;
-            this.lblIndex.Location = new System.Drawing.Point(15, 209);
+            this.lblIndex.Location = new System.Drawing.Point(15, 243);
             this.lblIndex.Name = "lblIndex";
             this.lblIndex.Size = new System.Drawing.Size(36, 13);
             this.lblIndex.TabIndex = 9;
             this.lblIndex.Text = "Index:";
             // 
+            // lblButtonClicked
+            // 
+            this.lblButtonClicked.AutoSize = true;
+            this.lblButtonClicked.Location = new System.Drawing.Point(12, 48);
+            this.lblButtonClicked.Name = "lblButtonClicked";
+            this.lblButtonClicked.Size = new System.Drawing.Size(76, 13);
+            this.lblButtonClicked.TabIndex = 11;
+            this.lblButtonClicked.Text = "Button Clicked";
+            // 
+            // txtBtnClicked
+            // 
+            this.txtBtnClicked.Location = new System.Drawing.Point(11, 64);
+            this.txtBtnClicked.MaxLength = 80;
+            this.txtBtnClicked.Name = "txtBtnClicked";
+            this.txtBtnClicked.Size = new System.Drawing.Size(309, 20);
+            this.txtBtnClicked.TabIndex = 10;
+            // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 233);
+            this.ClientSize = new System.Drawing.Size(335, 264);
+            this.Controls.Add(this.lblButtonClicked);
+            this.Controls.Add(this.txtBtnClicked);
             this.Controls.Add(this.lblIndex);
             this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.btnNext);
@@ -154,5 +175,7 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrev;
         private System.Windows.Forms.Label lblIndex;
+        private System.Windows.Forms.Label lblButtonClicked;
+        private System.Windows.Forms.TextBox txtBtnClicked;
     }
 }

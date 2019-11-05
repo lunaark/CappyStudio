@@ -43,7 +43,7 @@ namespace CappyStudio
         public static string[] GetInteraction(int index)
         {
             // get interaction in file at this index
-            string content = ParseInteractions()[index];
+            string content = interactions[index];
 
             // put all items from this interaction into a string array
             string[] items = content.Split(';');
